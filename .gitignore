@@ -1,0 +1,91 @@
+# ========================
+# Python / Backend
+# ========================
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+*.egg-info/
+.ruff_cache/
+.pytest_cache/
+.mypy_cache/
+.pdm-python
+.python-version
+
+# ========================
+# Database & Migrations
+# ========================
+*.sqlite3*
+tortoise_queries.json
+tortoise_last.txt
+migrations/
+
+# ========================
+# Logs
+# ========================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ========================
+# Node / Frontend
+# ========================
+node_modules/
+web/dist/
+web/dist-ssr/
+web/coverage/
+web/.VSCodeCounter/
+web/.pnpm-store/
+*.local
+
+# ========================
+# IDE & OS
+# ========================
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/launch.json
+.DS_Store
+._.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ========================
+# Docker runtime
+# ========================
+redis_data/
+
+# ========================
+# Secrets & env overrides
+# ========================
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# ========================
+# Testing
+# ========================
+web/cypress/videos/
+web/cypress/screenshots/
+web/playwright-report/
+web/test-results/
+web/.playwright/
+app_system_e2e.sqlite3*
+
+.codex/
+.claude/
+.agents/
+
+tmp/
+codegen_backups/
+skills-lock.json

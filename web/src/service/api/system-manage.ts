@@ -1,0 +1,270 @@
+import { request } from '../request';
+
+/** get role list */
+export function fetchGetRoleList(data?: Api.SystemManage.RoleSearchParams) {
+  return request<Api.SystemManage.RoleList>({
+    url: '/system-manage/roles/search',
+    method: 'post',
+    data: data ?? {}
+  });
+}
+
+/** get user list */
+export function fetchGetUserList(data?: Api.SystemManage.UserSearchParams) {
+  return request<Api.SystemManage.UserList>({
+    url: '/system-manage/users/search',
+    method: 'post',
+    data: data ?? {}
+  });
+}
+
+/** get menu list */
+export function fetchGetMenuList(data?: Api.SystemManage.MenuSearchParams) {
+  return request<Api.SystemManage.MenuList>({
+    url: '/system-manage/menus/search',
+    method: 'post',
+    data: data ?? {}
+  });
+}
+
+/** get all pages */
+export function fetchGetAllPages() {
+  return request<Api.SystemManage.MenuPageOption[]>({
+    url: '/system-manage/menus/pages',
+    method: 'get'
+  });
+}
+
+/** get menu tree */
+export function fetchGetMenuTree(params?: { includeHidden?: boolean }) {
+  return request<Api.SystemManage.MenuTree[]>({
+    url: '/system-manage/menus/tree',
+    method: 'get',
+    params
+  });
+}
+
+/** get menu button tree */
+export function fetchGetMenuButtonTree() {
+  return request<Api.SystemManage.ButtonTree[]>({
+    url: '/system-manage/menus/buttons/tree',
+    method: 'get'
+  });
+}
+
+/** get api tree */
+export function fetchGetApiTree() {
+  return request<Api.SystemManage.ApiTree[]>({
+    url: '/system-manage/apis/tree',
+    method: 'get'
+  });
+}
+
+/** get api tags */
+export function fetchGetApiTagsList() {
+  return request<Api.SystemManage.ApiTagTree[]>({
+    url: '/system-manage/apis/tags',
+    method: 'get'
+  });
+}
+
+/** get api list */
+export function fetchGetApiList(data?: Api.SystemManage.ApiSearchParams) {
+  return request<Api.SystemManage.ApiList>({
+    url: '/system-manage/apis/search',
+    method: 'post',
+    data: data ?? {}
+  });
+}
+
+/** update api status */
+export function fetchUpdateApiStatus(data: Api.SystemManage.ApiStatusUpdateParams) {
+  return request<Api.SystemManage.UpdateResult, 'json'>({
+    url: `/system-manage/apis/${data.id}/status`,
+    method: 'patch',
+    data: {
+      statusType: data.statusType
+    }
+  });
+}
+
+/** add user */
+export function fetchAddUser(data?: Api.SystemManage.UserAddParams) {
+  return request<Api.SystemManage.CreateResult, 'json'>({
+    url: '/system-manage/users',
+    method: 'post',
+    data
+  });
+}
+
+/** update user */
+export function fetchUpdateUser(data?: Api.SystemManage.UserUpdateParams) {
+  return request<Api.SystemManage.UpdateResult, 'json'>({
+    url: `/system-manage/users/${data?.id}`,
+    method: 'patch',
+    data
+  });
+}
+
+/** delete user */
+export function fetchDeleteUser(data?: Api.SystemManage.CommonDeleteParams) {
+  return request<null>({
+    url: `/system-manage/users/${data?.id}`,
+    method: 'delete'
+  });
+}
+
+/** batch delete user */
+export function fetchBatchDeleteUser(data?: Api.SystemManage.CommonBatchDeleteParams) {
+  return request<null>({
+    url: '/system-manage/users',
+    method: 'delete',
+    data: { ids: data?.ids }
+  });
+}
+
+/** offline user */
+export function fetchUserOffline(userId: string) {
+  return request<null>({
+    url: `/system-manage/users/${userId}/offline`,
+    method: 'post'
+  });
+}
+
+/** batch offline users by ids */
+export function fetchBatchUserOffline(data: Api.SystemManage.CommonBatchDeleteParams) {
+  return request<{ offlineCount: number }>({
+    url: '/system-manage/users/batch-offline',
+    method: 'post',
+    data
+  });
+}
+
+/** add role */
+export function fetchAddRole(data?: Api.SystemManage.RoleAddParams) {
+  return request<Api.SystemManage.CreateResult, 'json'>({
+    url: '/system-manage/roles',
+    method: 'post',
+    data
+  });
+}
+
+/** delete role */
+export function fetchDeleteRole(data?: Api.SystemManage.CommonDeleteParams) {
+  return request<null>({
+    url: `/system-manage/roles/${data?.id}`,
+    method: 'delete'
+  });
+}
+
+/** batch delete role */
+export function fetchBatchDeleteRole(data?: Api.SystemManage.CommonBatchDeleteParams) {
+  return request<null>({
+    url: '/system-manage/roles',
+    method: 'delete',
+    data: { ids: data?.ids }
+  });
+}
+
+/** update role */
+export function fetchUpdateRole(data?: Api.SystemManage.RoleUpdateParams) {
+  return request<Api.SystemManage.UpdateResult, 'json'>({
+    url: `/system-manage/roles/${data?.id}`,
+    method: 'patch',
+    data
+  });
+}
+
+/** get role menu ids */
+export function fetchGetRoleMenu(data?: Api.SystemManage.RoleAuthorizedParams) {
+  return request<Api.SystemManage.RoleAuthorizedList>({
+    url: `/system-manage/roles/${data?.id}/menus`,
+    method: 'get'
+  });
+}
+
+/** update role menu ids */
+export function fetchUpdateRoleMenu(data?: Api.SystemManage.RoleAuthorizedList) {
+  return request<Api.SystemManage.RoleAuthorizedList>({
+    url: `/system-manage/roles/${data?.id}/menus`,
+    method: 'patch',
+    data
+  });
+}
+
+/** get role button ids */
+export function fetchGetRoleButton(data?: Api.SystemManage.RoleAuthorizedParams) {
+  return request<Api.SystemManage.RoleAuthorizedList>({
+    url: `/system-manage/roles/${data?.id}/buttons`,
+    method: 'get'
+  });
+}
+
+/** update role button ids */
+export function fetchUpdateRoleButton(data?: Api.SystemManage.RoleAuthorizedList) {
+  return request<Api.SystemManage.RoleAuthorizedList>({
+    url: `/system-manage/roles/${data?.id}/buttons`,
+    method: 'patch',
+    data
+  });
+}
+
+/** get role api ids */
+export function fetchGetRoleApi(data?: Api.SystemManage.RoleAuthorizedParams) {
+  return request<Api.SystemManage.RoleAuthorizedList>({
+    url: `/system-manage/roles/${data?.id}/apis`,
+    method: 'get'
+  });
+}
+
+/** update role api ids */
+export function fetchUpdateRoleApi(data?: Api.SystemManage.RoleAuthorizedList) {
+  return request<Api.SystemManage.RoleAuthorizedList>({
+    url: `/system-manage/roles/${data?.id}/apis`,
+    method: 'patch',
+    data
+  });
+}
+
+/** add menu */
+export function fetchAddMenu(data?: Api.SystemManage.MenuAddParams) {
+  return request<Api.SystemManage.CreateResult, 'json'>({
+    url: '/system-manage/menus',
+    method: 'post',
+    data
+  });
+}
+
+/** delete menu */
+export function fetchDeleteMenu(data?: Api.SystemManage.CommonDeleteParams) {
+  return request<null>({
+    url: `/system-manage/menus/${data?.id}`,
+    method: 'delete'
+  });
+}
+
+/** batch delete menu */
+export function fetchBatchDeleteMenu(data?: Api.SystemManage.CommonBatchDeleteParams) {
+  return request<null>({
+    url: '/system-manage/menus',
+    method: 'delete',
+    data: { ids: data?.ids }
+  });
+}
+
+/** update menu */
+export function fetchUpdateMenu(data?: Api.SystemManage.MenuUpdateParams) {
+  return request<Api.SystemManage.UpdateResult, 'json'>({
+    url: `/system-manage/menus/${data?.id}`,
+    method: 'patch',
+    data
+  });
+}
+
+/** get dictionary options by dictionary type */
+export function fetchGetDictionaryOptions(dictType: string) {
+  return request<Api.SystemManage.DictionaryOption[]>({
+    url: `/system-manage/dictionaries/${dictType}/options`,
+    method: 'get'
+  });
+}

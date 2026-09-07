@@ -1,0 +1,83 @@
+[project]
+name = "fast-soy-admin"
+version = "1.0.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "argon2-cffi>=25.1.0",
+  "email-validator>=2.3.0",
+  "fastapi>=0.121.2",
+  "fastapi-cache2[redis]>=0.2.2",
+  "fastapi-guard>=5.0.0",
+  "httpx>=0.28.1",
+  "loguru>=0.7.3",
+  "orjson>=3.11.7",
+  "passlib>=1.7.4",
+  "pretty-errors>=1.2.25",
+  "psutil>=7.2.2",
+  "pydantic>=2.12.5",
+  "pydantic-settings>=2.13.1",
+  "pyjwt>=2.12.1",
+  "sqids>=0.5.0",
+  "starlette==0.52.1",
+  "tortoise-orm[asyncpg]>=1.1.7",
+  "granian>=2.3.0",
+  "python-multipart>=0.0.26",
+]
+
+[project.optional-dependencies]
+mysql = ["tortoise-orm[asyncmy]>=1.1.7"]
+mssql = ["tortoise-orm[asyncodbc]>=1.1.7"]
+oracle = ["tortoise-orm[asyncodbc]>=1.1.7"]
+
+[dependency-groups]
+dev = [
+  "pytest>=8.0",
+  "pytest-asyncio>=0.24",
+  "httpx>=0.28.1",
+  "fakeredis>=2.35.0",
+  "basedpyright>=1.39",
+  "ruff>=0.15",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "session"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+
+[tool.basedpyright]
+include = ["app"]
+exclude = [
+  "web",
+  ".venv",
+  "**/.*",
+  "**/__pycache__",
+  "**/node_modules",
+  "src/experimental",
+  "src/typestubs",
+]
+pythonVersion = "3.12"
+pythonPlatform = "All"
+defineConstant = { PYDANTIC_V2 = true }
+executionEnvironments = [
+  { root = "./tests/python_3_12", pythonVersion = "3.12", extraPaths = [
+    "./",
+  ] },
+  { root = "./tests", extraPaths = [
+    "./",
+  ] },
+  { root = "./app/system/schemas", reportIncompatibleVariableOverride = false, extraPaths = [
+    "./",
+  ] },
+  { root = "./" },
+]
+
+typeCheckingMode = "standard"
+disableBytesTypePromotions = true
+
+
+[tool.tortoise]
+tortoise_orm = "app.core.config.TORTOISE_ORM"

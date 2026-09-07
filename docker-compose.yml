@@ -1,0 +1,88 @@
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: deploy/web.Dockerfile
+    ports:
+      - "1880:80"
+    depends_on:
+      app:
+        condition: service_healthy
+    restart: always
+    volumes:
+      - static_data:/app/static
+    networks:
+      - internal
+
+  app:
+    build:
+      context: .
+      dockerfile: deploy/app.Dockerfile
+    depends_on:
+      redis:
+        condition: service_started
+      postgres:
+        condition: service_healthy
+    restart: always
+    volumes:
+      - static_data:/opt/fast-soy-admin/static
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:9999/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    networks:
+      - internal
+
+  redis:
+    image: redis:latest
+    networks:
+      - internal
+    volumes:
+      - redis_data:/data
+
+  postgres:
+    image: postgres:18.3-alpine
+    environment:
+      POSTGRES_USER: fastsoyadmin
+      POSTGRES_PASSWORD: fastsoyadmin
+      POSTGRES_DB: fastsoyadmin
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U fastsoyadmin -d fastsoyadmin"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - internal
+
+  # 循环重建数据库的 daemon: 每 10 分钟清空所有表并重跑完整初始化。
+  # 仅演示/压测用, 默认通过 profile 隔离不启动; 需要时执行:
+  #   docker compose --profile reset up -d
+  #   docker compose --profile reset logs -f reset_daemon
+  reset_daemon:
+    build:
+      context: .
+      dockerfile: deploy/app.Dockerfile
+    command: ["uv", "run", "--no-dev", "python", "deploy/reset_daemon.py"]
+    environment:
+      - PYTHONPATH=/opt/fast-soy-admin
+    depends_on:
+      - app
+    restart: unless-stopped
+    profiles:
+      - reset
+    networks:
+      - internal
+
+volumes:
+  redis_data:
+  static_data:
+  postgres_data:
+
+networks:
+  internal:
+    driver: bridge
