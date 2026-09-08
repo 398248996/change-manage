@@ -1,6 +1,6 @@
 # 切换后端数据库
 
-FastSoyAdmin 的 ORM 层用 [Tortoise ORM](https://tortoise.github.io)，支持 **PostgreSQL / SQLite / MySQL(MariaDB) / SQL Server / Oracle**。**切换数据库只需改一个环境变量 `DB_URL`，不需要动代码**。
+变更管理系统的 ORM 层用 [Tortoise ORM](https://tortoise.github.io)，支持 **PostgreSQL / SQLite / MySQL(MariaDB) / SQL Server / Oracle**。**切换数据库只需改一个环境变量 `DB_URL`，不需要动代码**。
 
 ## 快速切换（单数据库）
 
@@ -90,7 +90,7 @@ DB_URL="postgres://postgres:postgres@db:5432/fastsoyadmin"
 
 ## 业务模块独立数据库（进阶）
 
-有时候某些业务模块需要使用**另一个数据库**（例如账务模块用独立的 OLAP 库）。FastSoyAdmin 的 autodiscover 机制支持自动把这类模块注册为独立连接。
+有时候某些业务模块需要使用**另一个数据库**（例如账务模块用独立的 OLAP 库）。变更管理系统的 autodiscover 机制支持自动把这类模块注册为独立连接。
 
 ### 声明方式
 
