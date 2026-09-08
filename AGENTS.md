@@ -1,14 +1,11 @@
-# FastSoyAdmin - Claude Code Guide
+# 变更管理系统 - Claude Code Guide
 
-FastSoyAdmin v1.0.0 | FastAPI + Vue3 全栈后台管理模板 | MIT
+变更管理系统 v1.0.0 | FastAPI + Vue3 全栈化工企业变更管理系统 | MIT
 
 后端 [app/](app/)（FastAPI/Python），前端 [web/](web/)（Vue3/TypeScript，pnpm workspace），部署 [deploy/](deploy/)，迁移 [migrations/](migrations/)。
 
 文档（**所有约定细节看这里，本文不再重复**）：
 
-- 在线：<https://sleep1223.github.io/fast-soy-admin-docs/>
-- 离线：[docs/](docs/) — 与在线一致的 Markdown 镜像
-- 独立文档站源码：[.extra_repo/fast-soy-admin-docs/src/](.extra_repo/fast-soy-admin-docs/src/) — 更新公开文档时与 `docs/` 同步
 - 项目说明：[README.md](README.md) / [docs/](docs/)
 
 ---

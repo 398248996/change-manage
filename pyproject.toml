@@ -1,7 +1,7 @@
 [project]
-name = "fast-soy-admin"
+name = "change-manage"
 version = "1.0.0"
-description = "Add your description here"
+description = "化工企业变更管理系统"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
