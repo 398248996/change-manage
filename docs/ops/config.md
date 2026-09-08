@@ -7,7 +7,7 @@
 ::: code-group
 ```dotenv [示例：开发环境]
 # ---- 应用 ----
-APP_TITLE=FastSoyAdmin
+APP_TITLE=ChangeManage
 APP_DEBUG=true
 SECRET_KEY=015a42020f023ac2c3eda3d45fe5ca3fef8921ce63589f6d4fcdef9814cd7fa7
 
@@ -64,7 +64,7 @@ TRUSTED_HOSTS=["10.0.0.0/8"]
 | 配置 | 默认 | 说明 |
 |---|---|---|
 | `VERSION` | `0.1.0` | 应用版本号（影响 OpenAPI） |
-| `APP_TITLE` | `FastSoyAdmin` | OpenAPI title |
+| `APP_TITLE` | `ChangeManage` | OpenAPI title |
 | `APP_DESCRIPTION` | `Description` | OpenAPI description |
 | `APP_DEBUG` | `false` | `true` 时启用 `/openapi.json` 与 Swagger UI |
 | `SECRET_KEY` | 内置开发用 | JWT 签名 + Sqids 字母表种子（**生产必须改**） |

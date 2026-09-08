@@ -7,7 +7,7 @@ The backend reads `.env` from the project root via Pydantic Settings (`app/core/
 ::: code-group
 ```dotenv [development]
 # ---- App ----
-APP_TITLE=FastSoyAdmin
+APP_TITLE=ChangeManage
 APP_DEBUG=true
 SECRET_KEY=015a42020f023ac2c3eda3d45fe5ca3fef8921ce63589f6d4fcdef9814cd7fa7
 
@@ -64,7 +64,7 @@ TRUSTED_HOSTS=["10.0.0.0/8"]
 | Setting | Default | Purpose |
 |---|---|---|
 | `VERSION` | `0.1.0` | application version (affects OpenAPI) |
-| `APP_TITLE` | `FastSoyAdmin` | OpenAPI title |
+| `APP_TITLE` | `ChangeManage` | OpenAPI title |
 | `APP_DESCRIPTION` | `Description` | OpenAPI description |
 | `APP_DEBUG` | `false` | enables `/openapi.json` + Swagger UI |
 | `SECRET_KEY` | dev built-in | JWT signing key + Sqids alphabet seed (**must change in prod**) |
