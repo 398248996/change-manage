@@ -6,7 +6,7 @@
 - 库存扣减、额度冻结、计数器——**多条请求**都想写同一行
 - 批量导入、定时对账、一次性初始化——**只想有一个 worker 在跑**
 
-FastSoyAdmin 里可用的三把武器——**事务**、**乐观锁（含状态机）**、**Redis 分布式锁**——以及它们分别对应的场景。
+变更管理系统里可用的三把武器——**事务**、**乐观锁（含状态机）**、**Redis 分布式锁**——以及它们分别对应的场景。
 
 ## 部署拓扑：进程与线程
 
@@ -370,7 +370,7 @@ async def init_http() -> httpx.AsyncClient:
     return httpx.AsyncClient(
         timeout=httpx.Timeout(connect=3.0, read=10.0, write=10.0, pool=5.0),
         limits=httpx.Limits(max_connections=100, max_keepalive_connections=20),
-        headers={"User-Agent": "fast-soy-admin/1.0"},
+        headers={"User-Agent": "change-manage/1.0"},
     )
 
 
