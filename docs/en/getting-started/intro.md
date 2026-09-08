@@ -1,6 +1,6 @@
 # Introduction
 
-[FastSoyAdmin](https://github.com/sleep1223/fast-soy-admin) is a batteries-included full-stack admin template.
+[Change Management System](https://github.com/398248996/change-manage) is a chemical enterprise change management system.
 
 - **Frontend** — based on [SoybeanAdmin](https://github.com/soybeanjs/soybean-admin); Vue3 + Vite8 + TypeScript + Pinia + UnoCSS + Naive UI
 - **Backend** — FastAPI + Pydantic v2 + Tortoise ORM + Redis; layered as "system + business" with autodiscovered modules
@@ -84,9 +84,6 @@ Monorepo layout: `/app` backend, `/web` frontend, `/deploy` Docker / Nginx.
 
 ## Resources
 
-- [Live preview](https://fast-soy-admin.sleep0.de/)
-- [GitHub](https://github.com/sleep1223/fast-soy-admin)
-- [API docs (Apidog)](https://fast-soy-admin.apidog.io)
-- [SoybeanAdmin (frontend upstream)](https://github.com/soybeanjs/soybean-admin)
+- [GitHub](https://github.com/398248996/change-manage)
 - [FastAPI](https://fastapi.tiangolo.com/)
 - [Tortoise ORM](https://tortoise.github.io)

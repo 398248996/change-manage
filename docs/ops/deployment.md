@@ -3,8 +3,8 @@
 ## Docker Compose（推荐）
 
 ```bash
-git clone https://github.com/sleep1223/fast-soy-admin
-cd fast-soy-admin
+git clone https://github.com/398248996/change-manage
+cd change-manage
 just docker-db-init
 just up  # == docker compose up -d
 ```
@@ -49,11 +49,11 @@ docker compose exec app uv run tortoise migrate # 若本次更新含模型变更
 
 | 位置 | 字段 | 默认值 | 必改原因 |
 |---|---|---|---|
-| [`docker-compose.yml`](https://github.com/sleep1223/fast-soy-admin/blob/main/docker-compose.yml) `postgres.environment` | `POSTGRES_USER` / `POSTGRES_PASSWORD` / `POSTGRES_DB` | 均为 `fastsoyadmin` | 弱口令；任何能进入 compose 网络的容器都能直连 |
-| [`.env.docker`](https://github.com/sleep1223/fast-soy-admin/blob/main/.env.docker) | `DB_URL` | `postgres://fastsoyadmin:fastsoyadmin@postgres:5432/fastsoyadmin` | 必须与 compose 中的账号密码保持一致 |
-| [`.env.docker`](https://github.com/sleep1223/fast-soy-admin/blob/main/.env.docker) | `SECRET_KEY` | 模板自带 | JWT 签名密钥，泄露=任意伪造 token；用 `openssl rand -hex 32` 重新生成 |
-| [`.env.docker`](https://github.com/sleep1223/fast-soy-admin/blob/main/.env.docker) | `CORS_ORIGINS` | `["*"]` | 生产改成具体域名白名单 |
-| [`.env.docker`](https://github.com/sleep1223/fast-soy-admin/blob/main/.env.docker) | `APP_DEBUG` | 已是 `false`，确认不要改回 `true` | 调试模式会泄露堆栈与内部细节 |
+| `docker-compose.yml` `postgres.environment` | `POSTGRES_USER` / `POSTGRES_PASSWORD` / `POSTGRES_DB` | 均为 `fastsoyadmin` | 弱口令；任何能进入 compose 网络的容器都能直连 |
+| `.env.docker` | `DB_URL` | `postgres://fastsoyadmin:fastsoyadmin@postgres:5432/fastsoyadmin` | 必须与 compose 中的账号密码保持一致 |
+| `.env.docker` | `SECRET_KEY` | 模板自带 | JWT 签名密钥，泄露=任意伪造 token；用 `openssl rand -hex 32` 重新生成 |
+| `.env.docker` | `CORS_ORIGINS` | `["*"]` | 生产改成具体域名白名单 |
+| `.env.docker` | `APP_DEBUG` | 已是 `false`，确认不要改回 `true` | 调试模式会泄露堆栈与内部细节 |
 
 > 修改 PG 密码后若已经起过容器，需要 `docker compose down -v` 清掉 `postgres_data` 卷再重启——否则会沿用首次初始化时写入的旧密码。生产更稳的做法：用 `${PG_PASSWORD}` 等占位符 + 部署机的环境变量注入，避免明文入库。
 
@@ -185,7 +185,7 @@ server {
 
 ### 1. 移除登录页快捷登录与默认填充账号
 
-文件：[`web/src/views/_builtin/login/modules/pwd-login.vue`](https://github.com/sleep1223/fast-soy-admin/blob/main/web/src/views/_builtin/login/modules/pwd-login.vue)
+文件：`web/src/views/_builtin/login/modules/pwd-login.vue`
 
 需要改两处：
 
@@ -216,7 +216,7 @@ grep -RnE "Soybean|Super|Admin|123456" web/src/views/_builtin/login  # 应无业
 
 ### 2. 删除 / 禁用模板内置用户
 
-模板的 [`app/system/init_data.py`](https://github.com/sleep1223/fast-soy-admin/blob/main/app/system/init_data.py) 在首次启动时会创建以下账号（密码全部是 `123456`）：
+模板的 `app/system/init_data.py` 在首次启动时会创建以下账号（密码全部是 `123456`）：
 
 | 用户名 | 角色 | 密码 | 用途 |
 |---|---|---|---|
@@ -230,7 +230,7 @@ grep -RnE "Soybean|Super|Admin|123456" web/src/views/_builtin/login  # 应无业
 1. **创建你自己的超管**（推荐先做这一步，避免锁死后台）：用任一 `Soybean / Super` 登录 → 系统管理 → 用户管理 → 新增 → 设置强密码 → 角色勾选 `R_SUPER`。
 2. **退出登录，用新账号登录**，验证权限正常。
 3. **逐个删除模板账号**：用户管理列表里删除 `Soybean / Super / Admin / User`（或先批量「禁用」观察一周再删）。
-4. **如果不打算让访客自助注册**：把前端 [`pwd-login.vue`](https://github.com/sleep1223/fast-soy-admin/blob/main/web/src/views/_builtin/login/modules/pwd-login.vue) 底部的 `register` 跳转按钮一并删除；同时考虑在后端 [`auth.py`](https://github.com/sleep1223/fast-soy-admin/blob/main/app/system/api/auth.py) 注释掉 `/auth/register`（或加 IP 白名单 / 邀请码）。
+4. **如果不打算让访客自助注册**：把前端 `pwd-login.vue` 底部的 `register` 跳转按钮一并删除；同时考虑在后端 `auth.py` 注释掉 `/auth/register`（或加 IP 白名单 / 邀请码）。
 5. **如果你修改了 `init_data.py` 删除了模板用户的种子数据**，注意 `init_data.py` 仅 upsert（不会主动删数据库里已存在的用户），所以**老库需要手工清理一次**，新库则不会再生成。
 
 > **注意**：当前 `init_data.py` 的用户种子是无条件插入的——如果你只在数据库里删了用户没改种子文件，重启后会被重新创建。建议同时把种子里的演示用户也注释掉。
@@ -263,7 +263,7 @@ curl -H "Authorization: Bearer <user_token>" http://your-host/api/v1/system/user
 
 ### 4. 接入真实短信网关替换验证码占位
 
-当前 [`app/system/services/captcha.py`](https://github.com/sleep1223/fast-soy-admin/blob/main/app/system/services/captcha.py) 的 `send_captcha()` **只把验证码写进 Redis 并打日志**，并未真正发送。这意味着：注册 / 验证码登录 / 忘记密码三条链路在生产环境形同虚设——任何人能看到日志（或拿到 Redis）就能登录任意账号。
+当前 `app/system/services/captcha.py` 的 `send_captcha()` **只把验证码写进 Redis 并打日志**，并未真正发送。这意味着：注册 / 验证码登录 / 忘记密码三条链路在生产环境形同虚设——任何人能看到日志（或拿到 Redis）就能登录任意账号。
 
 替换步骤（以阿里云 SMS 为例，腾讯云 / 华为云 / Twilio 思路一致）：
 

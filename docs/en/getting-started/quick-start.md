@@ -14,8 +14,8 @@
 ## Get the code
 
 ```bash
-git clone https://github.com/sleep1223/fast-soy-admin.git
-cd fast-soy-admin
+git clone https://github.com/398248996/change-manage.git
+cd change-manage
 ```
 
 ## Option A: Docker (recommended)
@@ -77,7 +77,7 @@ Business demo modules are not loaded by default.
 ## Project structure
 
 ```
-fast-soy-admin/
+change-manage/
 ├── app/                  # Backend (FastAPI)
 │   ├── __init__.py       # App factory, middleware, lifespan
 │   ├── core/             # Framework infrastructure

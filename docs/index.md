@@ -2,22 +2,19 @@
 layout: home
 
 hero:
-  name: FastSoyAdmin
-  text: 全栈后台管理模板
+  name: 变更管理系统
+  text: 化工企业变更管理系统
   tagline: FastAPI · Vue3 · TypeScript · Naive UI · UnoCSS
   image:
     src: /logo.svg
-    alt: FastSoyAdmin
+    alt: 变更管理系统
   actions:
     - theme: brand
       text: 快速开始
       link: /getting-started/intro
     - theme: alt
       text: GitHub
-      link: https://github.com/sleep1223/fast-soy-admin
-    - theme: alt
-      text: 在线预览
-      link: https://fast-soy-admin.sleep0.de/
+      link: https://github.com/398248996/change-manage
 
 features:
   - icon: "\U0001F916"

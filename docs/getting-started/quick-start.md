@@ -14,8 +14,8 @@
 ## 获取代码
 
 ```bash
-git clone https://github.com/sleep1223/fast-soy-admin.git
-cd fast-soy-admin
+git clone https://github.com/398248996/change-manage.git
+cd change-manage
 ```
 
 ## 方式一：Docker 部署（推荐）
@@ -65,7 +65,7 @@ just run frontend  # 仅前端
 ## 项目结构
 
 ```
-fast-soy-admin/
+change-manage/
 ├── app/                  # 后端 (FastAPI)
 │   ├── __init__.py       # App 工厂、中间件、生命周期
 │   ├── core/             # 分层公共设施（CRUD、dep、中间件）

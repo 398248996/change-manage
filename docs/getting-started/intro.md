@@ -1,6 +1,6 @@
 # 简介
 
-[FastSoyAdmin](https://github.com/sleep1223/fast-soy-admin) 是一套开箱即用的全栈后台管理模板。
+[变更管理系统](https://github.com/398248996/change-manage) 是一套化工企业变更管理系统。
 
 - **前端** — 基于 [SoybeanAdmin](https://github.com/soybeanjs/soybean-admin)，Vue3 + Vite8 + TypeScript + Pinia + UnoCSS + Naive UI
 - **后端** — FastAPI + Pydantic v2 + Tortoise ORM + Redis，"系统模块 + 业务模块"分层，业务模块自动发现
@@ -84,9 +84,6 @@ monorepo 结构：`/app` 后端，`/web` 前端，`/deploy` Docker / Nginx。
 
 ## 链接
 
-- [在线预览](https://fast-soy-admin.sleep0.de/)
-- [GitHub 仓库](https://github.com/sleep1223/fast-soy-admin)
-- [API 文档 (Apidog)](https://fast-soy-admin.apidog.io)
-- [SoybeanAdmin（前端上游）](https://github.com/soybeanjs/soybean-admin)
+- [GitHub 仓库](https://github.com/398248996/change-manage)
 - [FastAPI](https://fastapi.tiangolo.com/)
 - [Tortoise ORM](https://tortoise.github.io)

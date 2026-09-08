@@ -2,22 +2,19 @@
 layout: home
 
 hero:
-  name: FastSoyAdmin
-  text: Full-Stack Admin Template
+  name: Change Management System
+  text: Chemical Enterprise Change Management System
   tagline: FastAPI · Vue3 · TypeScript · Naive UI · UnoCSS
   image:
     src: /logo.svg
-    alt: FastSoyAdmin
+    alt: Change Management System
   actions:
     - theme: brand
       text: Get Started
       link: /en/getting-started/intro
     - theme: alt
       text: View on GitHub
-      link: https://github.com/sleep1223/fast-soy-admin
-    - theme: alt
-      text: Live Preview
-      link: https://fast-soy-admin.sleep0.de/
+      link: https://github.com/398248996/change-manage
 
 features:
   - icon: "\U0001F916"
