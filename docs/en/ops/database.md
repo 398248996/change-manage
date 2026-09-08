@@ -1,6 +1,6 @@
 # Switching the database
 
-FastSoyAdmin uses [Tortoise ORM](https://tortoise.github.io), with support for **PostgreSQL / SQLite / MySQL (MariaDB) / SQL Server / Oracle**. **Switching DB only requires changing `DB_URL` in `.env`; no code changes**.
+The Change Management System uses [Tortoise ORM](https://tortoise.github.io), with support for **PostgreSQL / SQLite / MySQL (MariaDB) / SQL Server / Oracle**. **Switching DB only requires changing `DB_URL` in `.env`; no code changes**.
 
 ## Quick switch (single DB)
 
