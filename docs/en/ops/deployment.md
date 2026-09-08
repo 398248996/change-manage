@@ -3,8 +3,8 @@
 ## Docker Compose (recommended)
 
 ```bash
-git clone https://github.com/sleep1223/fast-soy-admin
-cd fast-soy-admin
+git clone https://github.com/398248996/change-manage
+cd change-manage
 just docker-db-init
 just up  # == docker compose up -d
 ```
