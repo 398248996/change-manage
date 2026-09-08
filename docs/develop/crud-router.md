@@ -213,8 +213,8 @@ async def _create_user(user_in: UserCreate, request: Request):
 
 仓库内参考实现：
 
-- [`app/system/api/users.py`](https://github.com/sleep1223/fast-soy-admin/blob/main/app/system/api/users.py) ＋ [`app/system/services/user.py`](https://github.com/sleep1223/fast-soy-admin/blob/main/app/system/services/user.py)
-- [`app/system/api/apis.py`](https://github.com/sleep1223/fast-soy-admin/blob/main/app/system/api/apis.py) ＋ [`app/system/services/api.py`](https://github.com/sleep1223/fast-soy-admin/blob/main/app/system/services/api.py)
+- `app/system/api/users.py` ＋ `app/system/services/user.py`
+- `app/system/api/apis.py` ＋ `app/system/services/api.py`
 
 > 这条约定也作为 PR review checklist 第 15 条强制执行，见 [架构总览 / 强制约定清单](../getting-started/architecture.md)。
 
