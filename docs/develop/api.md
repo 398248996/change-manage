@@ -2,7 +2,7 @@
 
 所有 system / business 接口共用同一套强制约定，偏离请先讨论。
 
-完整 API 参考：[Apidog](https://fast-soy-admin.apidog.io)。本文聚焦**约定**与**关键端点速查**。
+完整 API 参考：[Apidog](https://apidog.com)。本文聚焦**约定**与**关键端点速查**。
 
 ## 路由前缀
 
