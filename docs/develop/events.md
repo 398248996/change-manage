@@ -1,6 +1,6 @@
 # 事件总线
 
-进程内事件总线，用于**业务模块之间的解耦通信**。FastSoyAdmin 强约定 "system → 不知道 business、business 之间不互相 import"，跨模块联动必须走事件总线。
+进程内事件总线，用于**业务模块之间的解耦通信**。变更管理系统强约定 "system → 不知道 business、business 之间不互相 import"，跨模块联动必须走事件总线。
 
 源码：[`app/core/events.py`](../../../app/core/events.py)。
 
