@@ -83,7 +83,7 @@ useNaivePaginatedTable({
 });
 ```
 
-默认假设响应是 `{ records, total, current, size }`——FastSoyAdmin 后端的 `SuccessExtra` 输出正是这个形状，**不需要传 transformer**。
+默认假设响应是 `{ records, total, current, size }`——变更管理系统后端的 `SuccessExtra` 输出正是这个形状，**不需要传 transformer**。
 
 ### columns
 
