@@ -2,7 +2,7 @@
 
 All system / business endpoints share one enforced convention; deviations require discussion.
 
-Full API reference: [Apidog](https://fast-soy-admin.apidog.io). This page covers **conventions** and a **key endpoint cheat sheet**.
+Full API reference: [Apidog](https://apidog.com). This page covers **conventions** and a **key endpoint cheat sheet**.
 
 ## Route prefixes
 
