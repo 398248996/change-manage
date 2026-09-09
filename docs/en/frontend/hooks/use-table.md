@@ -83,7 +83,7 @@ useNaivePaginatedTable({
 });
 ```
 
-Default expects `{ records, total, current, size }` — FastSoyAdmin's `SuccessExtra` already returns this, **no transformer needed**.
+Default expects `{ records, total, current, size }` — the Change Management System's `SuccessExtra` already returns this, **no transformer needed**.
 
 ### columns
 
